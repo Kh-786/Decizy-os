@@ -1,0 +1,6 @@
+{
+  "name": "Decizy — Decision Intelligence for Architecture & Interior Design",
+  "description": "Decision-intelligence platform of AnyRoomz for managing architecture and interior design projects, 33 master decision types, approvals, dependencies, and risk registers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
