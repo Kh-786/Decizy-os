@@ -31,7 +31,13 @@ It equips project owners, architects, and project managers with structured decis
    - Clean architectural boundary: Selldone manages storefront catalog, orders, and payment gateways; Decizy manages project state, workflow, and approvals.
    - Built-in safe mock adapter for Shop ID 2906 with order lookup and entitlement provisioning.
 
-6. **Durable Operational Audit Trail**:
+6. **Phase 1 — Persistent Demonstration Storage & Backup Controls**:
+   - Automated browser-local persistence for all projects, decision reviews, A0 intakes, and audit trails.
+   - Versioned storage envelope (`schema v1`) with automatic fail-safe recovery against malformed JSON or outdated versions.
+   - Admin Data Controls: Live storage status telemetry, JSON export backups, validated JSON import, and explicit reset to clean seed data.
+   - Strict separation of repository contracts to prepare for future Supabase persistence without breaking client code.
+
+7. **Durable Operational Audit Trail**:
    - Append-only chronological log of every status change, revision, and dependency flag.
 
 ---

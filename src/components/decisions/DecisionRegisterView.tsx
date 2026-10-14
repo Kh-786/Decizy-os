@@ -61,8 +61,8 @@ export const DecisionRegisterView: React.FC = () => {
     return matchesStatus && matchesSearch;
   });
 
-  const handleApprove = (decision: ProjectDecision, optionTitle: string) => {
-    approveDecisionAction(
+  const handleApprove = async (decision: ProjectDecision, optionTitle: string) => {
+    await approveDecisionAction(
       decision.id,
       { id: currentUser.id, name: currentUser.fullName, role: currentUser.role },
       optionTitle,
@@ -73,9 +73,9 @@ export const DecisionRegisterView: React.FC = () => {
     if (updated) setSelectedDecision(updated);
   };
 
-  const handleReject = () => {
+  const handleReject = async () => {
     if (!selectedDecision || !rejectReasonInput.trim()) return;
-    rejectDecisionAction(
+    await rejectDecisionAction(
       selectedDecision.id,
       { id: currentUser.id, name: currentUser.fullName, role: currentUser.role },
       rejectReasonInput,
@@ -85,10 +85,10 @@ export const DecisionRegisterView: React.FC = () => {
     setRejectReasonInput('');
   };
 
-  const handleApplyMaterialChange = () => {
+  const handleApplyMaterialChange = async () => {
     if (!selectedDecision || !newOptionInput.trim() || !revisionRationaleInput.trim()) return;
 
-    const result = applyMaterialChangeAction(
+    const result = await applyMaterialChangeAction(
       selectedDecision.id,
       { id: currentUser.id, name: currentUser.fullName, role: currentUser.role },
       {

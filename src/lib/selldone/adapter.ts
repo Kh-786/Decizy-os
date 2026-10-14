@@ -6,8 +6,18 @@ import { MockSelldoneAdapter } from './mockAdapter';
  * Target: Shop ID 2906 (https://anyroomz.com)
  */
 
-const SELLDONE_SHOP_ID = import.meta.env.VITE_SELLDONE_SHOP_ID || '2906';
-const SELLDONE_API_KEY = import.meta.env.VITE_SELLDONE_API_KEY;
+const getEnvVar = (key: string): string | undefined => {
+  if (typeof import.meta !== 'undefined' && (import.meta as any).env?.[key]) {
+    return (import.meta as any).env[key];
+  }
+  if (typeof process !== 'undefined' && process.env?.[key]) {
+    return process.env[key];
+  }
+  return undefined;
+};
+
+const SELLDONE_SHOP_ID = getEnvVar('VITE_SELLDONE_SHOP_ID') || '2906';
+const SELLDONE_API_KEY = getEnvVar('VITE_SELLDONE_API_KEY');
 
 export const selldoneConfig: SelldoneConfig = {
   shopId: SELLDONE_SHOP_ID,

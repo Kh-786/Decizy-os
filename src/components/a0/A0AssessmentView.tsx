@@ -36,7 +36,7 @@ export const A0AssessmentView: React.FC = () => {
     '₹5 Cr+',
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrors({});
 
@@ -55,9 +55,8 @@ export const A0AssessmentView: React.FC = () => {
 
     setIsSubmitting(true);
 
-    // Simulate safe processing latency
-    setTimeout(() => {
-      const newAssessment = submitA0Assessment({
+    try {
+      const newAssessment = await submitA0Assessment({
         fullName: formData.fullName,
         email: formData.email,
         phone: formData.phone || undefined,
@@ -73,8 +72,9 @@ export const A0AssessmentView: React.FC = () => {
       });
 
       setSubmittedResult(newAssessment);
+    } finally {
       setIsSubmitting(false);
-    }, 600);
+    }
   };
 
   const resetForm = () => {
